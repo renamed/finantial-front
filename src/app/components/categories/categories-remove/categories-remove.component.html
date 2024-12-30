@@ -1,0 +1,18 @@
+<h2>Remove category</h2>
+
+<div id="message" role="alert" class="text-center alert">
+    {{ msg }}
+  </div>
+
+<ng-container *ngTemplateOutlet="recursiveList; context: { $implicit: categories }"></ng-container>
+
+<ng-template #recursiveList let-categories>
+    <ul>
+        <li *ngFor="let category of categories">
+            {{ category.name }} <button class="btn btn-danger text-nowrap" (click)="this.deleteCategory(category.id, category.name)">Delete</button>
+            <ng-container *ngIf="category.children && category.children.length > 0">
+                <ng-container *ngTemplateOutlet="recursiveList; context: { $implicit: category.children }"></ng-container>
+            </ng-container>
+        </li>
+    </ul>
+</ng-template>

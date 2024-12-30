@@ -1,0 +1,23 @@
+<h2>Institutions List</h2>
+
+<div id="message" role="alert" class="text-center alert">
+    {{ msg }}
+  </div>
+
+
+<table class="table table-striped" *ngIf="institutions.length">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let institution of institutions; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ institution.name }}</td>
+            <td>{{ institution.balance | currency: 'BRL':'symbol':'1.2-2' }}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+<h2>Institutions Remove</h2>
+
+<div id="message" role="alert" class="text-center alert">
+    {{ msg }}
+  </div>
+
+<p *ngIf="!institutions.length">No institutions registered</p>
+<div *ngIf="institutions.length">
+    <div class="row mt-3 e" *ngFor="let institution of institutions; let i = index">
+        <div class="col-8">
+            {{ institution.name }}
+        </div> 
+        <div class="col">
+            <button class="btn btn-outline-danger" (click)="this.deleteInstitution(institution.id, institution.name)">🗑️</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .e:hover{ background-color: #FAE7E7; border-color: red; }
+</style>

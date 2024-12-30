@@ -1,0 +1,42 @@
+<h2>Dashboard</h2>
+
+<div id="message" role="alert" class="text-center alert">
+    {{ msg }}
+</div>
+
+<div class="row">
+    <div class="col-1">
+        <label for="period">Period: </label>
+    </div>
+    <div class="col-3">
+        <select #periodSelected (change)="onPeriodChange()" class="form-control" id="periods" name="period"
+            formControlName="periodId">
+            <option *ngFor="let period of periods" [value]="period.id">{{ period.description }}</option>
+        </select>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width:5%">#</th>
+                <th style="width:5%"></th>
+                <th style="width: 50%">Category</th>
+                <th style="width: 15%">Sum</th>
+                <th style="width: 10%">Qty</th>
+                <th style="width: 15%">Avg</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let elem of valueByCategory; let i = index">
+                <td>{{ i + 1}} </td>
+                <td><button (click)="DrillDown(elem.categoryId, i + 1)" >+</button> </td>
+                <td>{{ elem.category}}</td>
+                <td>{{ elem.sum | currency: 'BRL':'symbol':'1.2-2' }}</td>
+                <td>{{ elem.qty }}</td>
+                <td>{{ elem.avg | currency: 'BRL':'symbol':'1.2-2' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,12 @@
+<h2>Periods Remove</h2>
+
+<div *ngIf="msg" style="width: 90%; text-align: center; color: red; background-color: white;">
+    {{ msg }}   
+</div>
+
+<p *ngIf="!periods.length">No Periods registered</p>
+<ul *ngIf="periods.length">
+    <li *ngFor="let period of periods; let i = index">
+        {{ period.description }} <button (click)="this.deletePeriod(period.id)">Delete</button>
+    </li>
+</ul>

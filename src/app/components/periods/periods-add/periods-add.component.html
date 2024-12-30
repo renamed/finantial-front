@@ -1,0 +1,17 @@
+<h2>Create Period</h2>
+
+<div *ngIf="msg" style="width: 90%; text-align: center; color: red; background-color: white;">
+    {{ msg }}   
+</div>
+
+<form [formGroup]="periodForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="initialDate">Initial Date</label>
+    <input type="date" class="form-control" id="initialDate" formControlName="initialDate">
+    <label for="finalDate">Final Date</label>
+    <input type="date" class="form-control" id="finalDate" formControlName="finalDate" />
+    <label for="description">Description</label>
+    <input type="text" class="form-control" id="description" formControlName="description" maxlength="6" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

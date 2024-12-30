@@ -1,0 +1,19 @@
+<h2>List categories</h2>
+
+<div id="message" *ngIf="msg" role="alert" class="text-center alert alert-danger">
+    {{ msg }}
+  </div>
+
+<ng-container *ngTemplateOutlet="recursiveList; context: { $implicit: categories }"></ng-container>
+
+
+<ng-template #recursiveList let-categories>
+    <ul>
+        <li *ngFor="let category of categories">
+            {{ category.name }}
+            <ng-container *ngIf="category.children && category.children.length > 0">
+                <ng-container *ngTemplateOutlet="recursiveList; context: { $implicit: category.children }"></ng-container>
+            </ng-container>
+        </li>
+    </ul>
+</ng-template>
